@@ -10,9 +10,9 @@ UNITS {
 }
 
 PARAMETER {
-	v (mV)
-        ek (mV)		: must be explicitely def. in hoc
-	celsius		(degC)
+	v = -65 (mV)
+    ek = -80 (mV)		: must be explicitely def. in hoc
+	celsius	= 35 (degC)
 	gkdrbar=.003 (mho/cm2)
         vhalfn=13   (mV)
         a0n=0.02      (/ms)
