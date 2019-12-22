@@ -42,7 +42,7 @@ PARAMETER {
         vvh=-58		(mV) 
         vvs=2		(mV)
         ar=1		(1)		: 1=no inact., 0=max inact.
-	ena = 40		(mV)            : must be explicitly def. in hoc
+	ena = 80		(mV)            : must be explicitly def. in hoc
 	celsius = 35
 	v = -65		(mV)
 }
