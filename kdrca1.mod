@@ -27,7 +27,7 @@ PARAMETER {
 NEURON {
 	SUFFIX kdr
 	USEION k READ ek WRITE ik
-        RANGE gkdr, gkdrbar
+        RANGE gkdr, gkdrbar, v, ek, celsius
 	GLOBAL ninf,taun
 }
 
