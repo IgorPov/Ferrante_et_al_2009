@@ -11,7 +11,7 @@ UNITS {
 
 PARAMETER {
 	v = -65 (mV)
-    ek = -80 (mV)		: must be explicitely def. in hoc
+    ek = -1000 (mV)		: must be explicitely def. in hoc
 	celsius	= 35 (degC)
 	gkdrbar=.003 (mho/cm2)
         vhalfn=13   (mV)
@@ -27,7 +27,7 @@ PARAMETER {
 NEURON {
 	SUFFIX kdr
 	USEION k READ ek WRITE ik
-        RANGE gkdr, gkdrbar, celsius, ek, v
+        RANGE gkdr, gkdrbar
 	GLOBAL ninf,taun
 }
 
