@@ -3,6 +3,12 @@ TITLE K-DR channel
 : modified to account for Dax et al.
 : M.Migliore 1997
 
+NEURON {
+	SUFFIX kdr
+    RANGE gkdr, gkdrbar, v, ek, celsius
+	GLOBAL ninf,taun
+}
+
 UNITS {
 	(mA) = (milliamp)
 	(mV) = (millivolt)
@@ -10,9 +16,9 @@ UNITS {
 }
 
 PARAMETER {
-	v = -65 (mV)
-    ek = -1000 (mV)		: must be explicitely def. in hoc
-	celsius	= 35 (degC)
+	v = -65.0 (mV)
+    ek = -1000.0 (mV)		: must be explicitely def. in hoc
+	celsius	= 35.0 (degC)
 	gkdrbar=.003 (mho/cm2)
         vhalfn=13   (mV)
         a0n=0.02      (/ms)
@@ -21,13 +27,6 @@ PARAMETER {
 	nmax=10  (1)
 	q10=1
 	sh = 10
-}
-
-
-NEURON {
-	SUFFIX kdr
-    RANGE gkdr, gkdrbar, v, ek, celsius
-	GLOBAL ninf,taun
 }
 
 STATE {
