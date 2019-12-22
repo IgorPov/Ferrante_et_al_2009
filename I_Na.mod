@@ -9,9 +9,12 @@ for the subthalamopallidal network of the basal ganglia. J Neurosci 22:2963-76
 ENDCOMMENT
 
 NEURON {
+	THREADSAFE
+	
+	POINT_PROCESS Na
 	SUFFIX Na
-	NONSPECIFIC_CURRENT I
 	RANGE g0, v0, tau_0h, tau_1h, phi_h, theta_th, theta_h, sigma_th, sigma_h, theta_m, sigma_m
+	NONSPECIFIC_CURRENT I
 }
 
 UNITS {
