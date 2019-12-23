@@ -6,7 +6,7 @@ TITLE na3
 NEURON {
 	THREADSAFE
 
-    	POINT_PROCESS na3
+    	SUFFIX na3
 	: USEION na READ ena WRITE ina
 	RANGE  gbar, ar, ena, celsius, v
 	GLOBAL minf, hinf, mtau, htau, sinf, taus,qinf, thinf
