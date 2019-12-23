@@ -6,7 +6,7 @@ TITLE K-DR channel
 NEURON {
 	THREADSAFE
 
-    	POINT_PROCESS kdr
+    	SUFFIX kdr
     	RANGE gkdr, gkdrbar, v, ek, celsius
 	GLOBAL ninf,taun
 }
