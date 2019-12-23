@@ -4,9 +4,11 @@ TITLE na3
 : added sh to account for higher threshold M.Migliore, Apr.2002
 
 NEURON {
-	SUFFIX na3
-	USEION na READ ena WRITE ina
-	RANGE  gbar, ar
+	THREADSAFE
+
+    	POINT_PROCESS na3
+	: USEION na READ ena WRITE ina
+	RANGE  gbar, ar, ena, celsius, v
 	GLOBAL minf, hinf, mtau, htau, sinf, taus,qinf, thinf
 }
 
@@ -128,5 +130,3 @@ FUNCTION trap0(v,th,a,q) {
 	        trap0 = a * q
  	}
 }	
-
-        
