@@ -4,8 +4,10 @@ TITLE K-DR channel
 : M.Migliore 1997
 
 NEURON {
-	SUFFIX kdr
-    RANGE gkdr, gkdrbar, v, ek, celsius
+	THREADSAFE
+
+    	POINT_PROCESS kdr
+    	RANGE gkdr, gkdrbar, v, ek, celsius
 	GLOBAL ninf,taun
 }
 
@@ -17,7 +19,7 @@ UNITS {
 
 PARAMETER {
 	v = -65.0 (mV)
-    ek = -1000.0 (mV)		: must be explicitely def. in hoc
+    	ek = -80.0 (mV)		: must be explicitely def. in hoc
 	celsius	= 35.0 (degC)
 	gkdrbar=.003 (mho/cm2)
         vhalfn=13   (mV)
@@ -74,17 +76,3 @@ PROCEDURE rates(v (mV)) { :callable from hoc
         taun = betn(v)/(qt*a0n*(1+a))
 	if (taun<nmax) {taun=nmax/qt}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
