@@ -4,11 +4,9 @@ TITLE na3
 : added sh to account for higher threshold M.Migliore, Apr.2002
 
 NEURON {
-	THREADSAFE
-
-    	SUFFIX na3
-	: USEION na READ ena WRITE ina
-	RANGE  gbar, ar, ena, v
+	SUFFIX na3
+	USEION na READ ena WRITE ina
+	RANGE  gbar, ar
 	GLOBAL minf, hinf, mtau, htau, sinf, taus,qinf, thinf
 }
 
@@ -44,9 +42,9 @@ PARAMETER {
         vvh=-58		(mV) 
         vvs=2		(mV)
         ar=1		(1)		: 1=no inact., 0=max inact.
-	ena = 40		(mV)            : must be explicitly def. in hoc
+	ena		(mV)            : must be explicitly def. in hoc
 	celsius
-	v = -65		(mV)
+	v 		(mV)
 }
 
 
@@ -87,11 +85,11 @@ FUNCTION alpv(v(mV)) {
 }
         
 FUNCTION alps(v(mV)) {  
-  alps = exp(1.e-3*zetas*(v-vhalfs-sh)*9.648e4/(8.315*(273.16+35.0)))
+  alps = exp(1.e-3*zetas*(v-vhalfs-sh)*9.648e4/(8.315*(273.16+celsius)))
 }
 
 FUNCTION bets(v(mV)) {
-  bets = exp(1.e-3*zetas*gms*(v-vhalfs-sh)*9.648e4/(8.315*(273.16+35.0)))
+  bets = exp(1.e-3*zetas*gms*(v-vhalfs-sh)*9.648e4/(8.315*(273.16+celsius)))
 }
 
 LOCAL mexp, hexp, sexp
@@ -130,3 +128,11 @@ FUNCTION trap0(v,th,a,q) {
 	        trap0 = a * q
  	}
 }	
+
+        
+
+
+
+
+
+

@@ -3,14 +3,6 @@ TITLE K-DR channel
 : modified to account for Dax et al.
 : M.Migliore 1997
 
-NEURON {
-	THREADSAFE
-
-    	SUFFIX kdr
-    	RANGE gkdr, gkdrbar, v, ek
-	GLOBAL ninf,taun
-}
-
 UNITS {
 	(mA) = (milliamp)
 	(mV) = (millivolt)
@@ -18,9 +10,9 @@ UNITS {
 }
 
 PARAMETER {
-	v = -65.0 (mV)
-    	ek = -80.0 (mV)		: must be explicitely def. in hoc
-	celsius (degC)
+	v (mV)
+        ek (mV)		: must be explicitely def. in hoc
+	celsius		(degC)
 	gkdrbar=.003 (mho/cm2)
         vhalfn=13   (mV)
         a0n=0.02      (/ms)
@@ -29,6 +21,14 @@ PARAMETER {
 	nmax=10  (1)
 	q10=1
 	sh = 10
+}
+
+
+NEURON {
+	SUFFIX kdr
+	USEION k READ ek WRITE ik
+        RANGE gkdr,gkdrbar
+	GLOBAL ninf,taun
 }
 
 STATE {
@@ -56,11 +56,11 @@ INITIAL {
 
 
 FUNCTION alpn(v(mV)) {
-  alpn = exp(1.e-3*zetan*(v-vhalfn-sh)*9.648e4/(8.315*(273.16+35.0))) 
+  alpn = exp(1.e-3*zetan*(v-vhalfn-sh)*9.648e4/(8.315*(273.16+celsius))) 
 }
 
 FUNCTION betn(v(mV)) {
-  betn = exp(1.e-3*zetan*gmn*(v-vhalfn-sh)*9.648e4/(8.315*(273.16+35.0))) 
+  betn = exp(1.e-3*zetan*gmn*(v-vhalfn-sh)*9.648e4/(8.315*(273.16+celsius))) 
 }
 
 DERIVATIVE states {     : exact when v held constant; integrates over dt step
@@ -76,3 +76,23 @@ PROCEDURE rates(v (mV)) { :callable from hoc
         taun = betn(v)/(qt*a0n*(1+a))
 	if (taun<nmax) {taun=nmax/qt}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
