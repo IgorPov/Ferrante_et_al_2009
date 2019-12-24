@@ -7,7 +7,7 @@ NEURON {
 	THREADSAFE
 
     	SUFFIX kdr
-    	RANGE gkdr, gkdrbar, v, ek, celsius
+    	RANGE gkdr, gkdrbar, v, ek
 	GLOBAL ninf,taun
 }
 
@@ -20,7 +20,7 @@ UNITS {
 PARAMETER {
 	v = -65.0 (mV)
     	ek = -80.0 (mV)		: must be explicitely def. in hoc
-	celsius	= 35.0 (degC)
+	celsius (degC)
 	gkdrbar=.003 (mho/cm2)
         vhalfn=13   (mV)
         a0n=0.02      (/ms)
@@ -56,11 +56,11 @@ INITIAL {
 
 
 FUNCTION alpn(v(mV)) {
-  alpn = exp(1.e-3*zetan*(v-vhalfn-sh)*9.648e4/(8.315*(273.16+celsius))) 
+  alpn = exp(1.e-3*zetan*(v-vhalfn-sh)*9.648e4/(8.315*(273.16+35.0))) 
 }
 
 FUNCTION betn(v(mV)) {
-  betn = exp(1.e-3*zetan*gmn*(v-vhalfn-sh)*9.648e4/(8.315*(273.16+celsius))) 
+  betn = exp(1.e-3*zetan*gmn*(v-vhalfn-sh)*9.648e4/(8.315*(273.16+35.0))) 
 }
 
 DERIVATIVE states {     : exact when v held constant; integrates over dt step
