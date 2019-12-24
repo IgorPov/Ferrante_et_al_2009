@@ -8,7 +8,7 @@ NEURON {
 
     	SUFFIX na3
 	: USEION na READ ena WRITE ina
-	RANGE  gbar, ar, ena, celsius, v
+	RANGE  gbar, ar, ena, v
 	GLOBAL minf, hinf, mtau, htau, sinf, taus,qinf, thinf
 }
 
@@ -45,7 +45,7 @@ PARAMETER {
         vvs=2		(mV)
         ar=1		(1)		: 1=no inact., 0=max inact.
 	ena = 40		(mV)            : must be explicitly def. in hoc
-	celsius = 35
+	celsius
 	v = -65		(mV)
 }
 
@@ -87,11 +87,11 @@ FUNCTION alpv(v(mV)) {
 }
         
 FUNCTION alps(v(mV)) {  
-  alps = exp(1.e-3*zetas*(v-vhalfs-sh)*9.648e4/(8.315*(273.16+celsius)))
+  alps = exp(1.e-3*zetas*(v-vhalfs-sh)*9.648e4/(8.315*(273.16+35.0)))
 }
 
 FUNCTION bets(v(mV)) {
-  bets = exp(1.e-3*zetas*gms*(v-vhalfs-sh)*9.648e4/(8.315*(273.16+celsius)))
+  bets = exp(1.e-3*zetas*gms*(v-vhalfs-sh)*9.648e4/(8.315*(273.16+35.0)))
 }
 
 LOCAL mexp, hexp, sexp
